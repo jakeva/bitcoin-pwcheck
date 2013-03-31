@@ -155,5 +155,5 @@ clean:
 
 FORCE:
 
-hashchecker: bitcoind
-	$(CXX) $(CFLAGS) -o hashchecker $(LIBPATHS) crypter.cpp util.cpp hashchecker.cpp $(LIBS)
+hashchecker: bitcoind hashchecker.cpp
+	$(CXX) $(CFLAGS) -o hashchecker $(LIBPATHS) key.cpp crypter.cpp hashchecker.cpp $(LIBS)
