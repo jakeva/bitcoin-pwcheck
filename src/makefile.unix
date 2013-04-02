@@ -138,6 +138,7 @@ PWCHKOBJS= \
     obj/crypter.o \
     obj/key.o \
     obj/util.o \
+    obj/netbase.o \
     obj/pwcheck.o \
 
 all: bitcoind pwcheck
