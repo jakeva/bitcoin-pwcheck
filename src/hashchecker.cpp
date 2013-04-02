@@ -3,20 +3,6 @@
 
 using namespace std;
 
-void swap(SecureString &s, int i, int j)
-{
-	char temp = s[i];
-	s[i] = s[j];
-	s[j] = temp;
-}
-void permutation(int k, SecureString &s)
-{
-    for(unsigned int j = 1; j < s.size(); ++j)
-    {
-        swap(s, k % (j + 1), j);
-        k = k / (j + 1);
-    }
-}
 int GetDigitValue (char digit)
 {
      int asciiOffset, digitValue;
@@ -67,10 +53,6 @@ inline double Factorial(int x) {
 }
 int main(int argc, char* argv[])
 {
-  if (argc != 2){
-    printf("Usage: hashchecker password");
-    return 1;
-  }
 	CCrypter crypter;
 	CKeyingMaterial vMasterKey;
 
@@ -84,29 +66,22 @@ int main(int argc, char* argv[])
 
 
     // Try any password as input
-	SecureString attempt= argv[1];
+	SecureString attempt;
+    std::getline(std::cin, attempt);
 
-	double count = Factorial(attempt.size());
-    bool found = false;
-
-	for (int i = 0; i <= count; i++)
-	{
-
-        if (i > 0) //test the word as typed in on first iteration
-    		permutation(i-1, attempt);
-
-		const SecureString strWalletPassphrase = attempt;
-		cout << i << "-" << strWalletPassphrase <<"\n";
-		if(!crypter.SetKeyFromPassphrase(strWalletPassphrase, chSalt, nDeriveIterations, 0))
-		{
-			// cout << i << " " << strWalletPassphrase <<"\n";
-	        continue;
-	    }
+    do{
+    	const SecureString strWalletPassphrase = attempt;
+    	std::cout << strWalletPassphrase <<"\n";
+    	if(!crypter.SetKeyFromPassphrase(strWalletPassphrase, chSalt, nDeriveIterations, 0))
+    	{
+    		// cout << i << " " << strWalletPassphrase <<"\n";
+            continue;
+        }
         if (!crypter.Decrypt(vchCryptedKey, vMasterKey))
         {
         	// cout << i << " " << strWalletPassphrase <<"\n";
-			continue;
-		}
+    		continue;
+    	}
 
         CSecret vchSecret;
         if(!DecryptSecret(vMasterKey, vchCryptedSecret, Hash(vchPubKey.begin(), vchPubKey.end()), vchSecret))
@@ -124,14 +99,11 @@ int main(int argc, char* argv[])
         key.SetSecret(vchSecret);
         if (key.GetPubKey() == vchPubKey)
         {
-            cout<<"Found one: "<<strWalletPassphrase<<"\n";
-            found = true;
-            break;
+            cout<<"Found it: "<<strWalletPassphrase<<"\n";
+            return 0;
         }
-        // else
-        //     cout << "** didn't get the pubkey back **\n";
-	}
-    if (found)
-        cout << "Found it! Congratulations\n";
-	return 0;
+
+    }while(std::getline(std::cin, attempt));
+
+    return 0;
 }
