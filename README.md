@@ -4,17 +4,17 @@ This bitcoin fork has a small extension added to the original codebase in order 
 
 All you need from your wallet is the following:
 
--Number of iterations - wallet
--Salt - wallet
--Crypted Key - wallet
--Public Key - from a transaction
--Crypted Secret - from a transaction
++Number of iterations  (wallet)
++Salt  (wallet)
++Crypted Key  (wallet)
++Public Key  (from a transaction)
++Crypted Secret  (from a transaction)
 
 Any input can be piped into pwcheck. I've included an example C++ program which outputs all permutations (using the std library) of its only input, which can be piped into pwcheck in order to try all permutation of a passphrase, each attempt is output. This is stored in src as a program called 'permute'. So for instance, the command `..\permute banana | .\pwcheck` would output
 
--aaabnn
--aaanbn
--aaannb
++aaabnn
++aaanbn
++aaannb
 
 and so on, trying each against the wallet's hash. The way this is done mimics the Unlock() method of the Wallet.cpp class of the original Bitcoin source, and has been tested against wallet
 
