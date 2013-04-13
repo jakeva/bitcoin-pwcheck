@@ -1,6 +1,6 @@
 pwcheck
 ===========
-This bitcoin fork has a small extension added to the original codebase in order to make rapidly attempting passwords against the cryptographic security measures locking a bitcoin wallet easier to do. The extension is kept in pwcheck.cpp, build with "make -f makefile.(unix, osx, etc) pwcheck".
+This bitcoin fork has a small extension added to the original codebase in order to make rapidly attempting passwords against the cryptographic security measures locking a bitcoin wallet easier to do. The extension is kept in pwcheck.cpp, build with `make -f makefile.(unix, osx, etc) pwcheck`.
 
 All you need from your wallet is the following:
 
@@ -10,7 +10,7 @@ All you need from your wallet is the following:
 *Public Key  (from a transaction)
 *Crypted Secret  (from a transaction)
 
-Any input can be piped into pwcheck. I've included an example C++ program which outputs all permutations (using the std library) of its only input, which can be piped into pwcheck in order to try all permutation of a passphrase, each attempt is output. This is stored in src as a program called 'permute'. So for instance, the command `..\permute banana | .\pwcheck` would output
+Any input can be piped into pwcheck. I've included an example C++ program which outputs all permutations (using the std library) of its only input, which can be piped into pwcheck in order to try all permutation of a passphrase, each attempt is output. This is stored in src as a program called `permute`. So for instance, the command `..\permute banana | .\pwcheck` would output:
 
 *aaabnn
 *aaanbn
