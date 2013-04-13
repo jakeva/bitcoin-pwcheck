@@ -68,6 +68,10 @@ int main(int argc, char* argv[])
     CKeyingMaterial vMasterKey;
 
     // Use the crypto from the locked wallet
+    // Replace these values with your own
+    // Note: so far I have had no luck cracking these values
+    //       they are from my locked wallet. If anyone has success,
+    //       I will reward them with 5 bitcoin. email me at jakeva (at) gmail (dot) com
     const unsigned int nDeriveIterations = 90367;
     const std::vector<unsigned char> chSalt = Convert("693f87a08e771ef0");
     const std::vector<unsigned char> vchCryptedKey = Convert("153eabea2afe4fa960c4d0cc05eb8b233f7f00bc4dc55bebf129f40cdcc3bec3451d572c0851fa5327d08d532f48bbd5");
