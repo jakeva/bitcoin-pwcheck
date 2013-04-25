@@ -1,6 +1,6 @@
 pwcheck
 ===========
-This bitcoin fork has a small extension added to the original codebase in order to make rapidly attempting passwords against the cryptographic security measures locking a bitcoin wallet easier to do. The extension is kept in pwcheck.cpp, build with `make -f makefile.(unix, osx, etc) pwcheck`.
+This bitcoin fork has a small extension added to the original codebase in order to make rapidly attempting passwords against the cryptographic security measures locking a bitcoin wallet easier to do. The extension is kept in pwcheck.cpp, build with `make -f makefile.["unix", "osx"] pwcheck`.
 
 All you need from your wallet is the following:
 
