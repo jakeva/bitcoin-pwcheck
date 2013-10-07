@@ -5,10 +5,6 @@
 
 #include "init.h"
 
-// #ifndef WIN32
-// #include <signal.h>
-// #endif
-
 CWallet* pwalletMain;
 CClientUIInterface uiInterface;
 
