@@ -1,8 +1,8 @@
 pwcheck
 ===========
-This bitcoin fork has a small extension added to the original codebase in order to make rapidly attempting passwords against the cryptographic security measures locking a bitcoin wallet easier to do. The extension is kept in pwcheck.cpp, build with `make -f makefile.["unix", "osx"] pwcheck`.
+This bitcoin fork has a small extension added to the original codebase in order to make rapidly attempting passwords against the cryptographic security measures locking a bitcoin wallet easier to do. The extension is kept in pwcheck.cpp, once you've inserted your wallets values build with `make -f makefile.["unix", "osx"] pwcheck`.
 
-All you need from your wallet is the following:
+You will need from your wallet the following:
 
 * Number of iterations  (wallet)
 * Salt  (wallet)
@@ -10,19 +10,20 @@ All you need from your wallet is the following:
 * Public Key  (from a transaction)
 * Crypted Secret  (from a transaction)
 
-Any input can be piped into pwcheck. I've included an example C++ program which outputs all permutations (using the std library) of its only input, which can be piped into pwcheck in order to try all permutation of a passphrase, each attempt is output. This is stored in src as a program called `permute`. So for instance, the command `..\permute banana | .\pwcheck` would output:
+Values are currently hardcoded into pwcheck.cpp, so you'll need to extract the values from your wallet you're trying to unlock and replace them in pwcheck.cpp before compiling for your machine. The current values belong to a wallet what might yet be unlocked…
+
+Any input can be piped into pwcheck. I've included an example C++ program which outputs all permutations (using the std library) of its only input, which can be piped into pwcheck in order to try all permutation of a passphrase, each attempt is output. This is stored in src as a program called `permute.cpp`. Simply compile it with 'g++ permute.cpp -o permute'. So for instance, the command `..\permute banana | .\pwcheck` generates the permutations of banana, and outputs:
 
 * aaabnn
 * aaanbn
 * aaannb
 
-and so on, trying each against the wallet's hash. The way this is done mimics the Unlock() method of the Wallet.cpp class of the original Bitcoin source, and has been tested against wallet
+and so on, trying each against the wallet's hash. The way this is done mimics the Unlock() method of the Wallet.cpp class of the original Bitcoin source.
 
 If (& hopefully when!) a password hashes against the wallet correctly, the program reports success and terminates.
 
 
-
-
+I just wrote this piggybacking off of Bitcoin, although I stripped out every piece of the original Bitcoin source that was not absolutely necessary for pwcheck. This makes it an efficient program for rapidly attempting a large number of passwords against your wallet's cryptographic hash without needing to use bitcoind. ([parallel](http://savannah.gnu.org/projects/parallel) looks encouraging for its ability to, well, parallelize processing of your potentially large input. Unfortunately the use of SecureString precludes that possibility (eg, cat huge_dictionary | parallel --eta -j+0 ../pwcheck) for now.)
 
 
 
