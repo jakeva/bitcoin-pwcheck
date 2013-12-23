@@ -23,7 +23,7 @@ and so on, trying each against the wallet's hash. The way this is done mimics th
 If (& hopefully when!) a password hashes against the wallet correctly, the program reports success and terminates.
 
 
-I just wrote this piggybacking off of Bitcoin, although I stripped out every piece of the original Bitcoin source that was not absolutely necessary for pwcheck. This makes it an efficient program for rapidly attempting a large number of passwords against your wallet's cryptographic hash without needing to use bitcoind. ([parallel](http://savannah.gnu.org/projects/parallel) looks encouraging for its ability to, well, parallelize processing of your potentially large input. Unfortunately the use of SecureString precludes that possibility (eg, cat huge_dictionary | parallel --eta -j+0 ../pwcheck) for now.)
+I wrote this piggybacking off of Bitcoin, although I stripped out every piece of the original Bitcoin source that was not absolutely necessary for pwcheck. This makes it an efficient program for rapidly attempting a large number of passwords against your wallet's cryptographic hash without needing to use bitcoind. ([parallel](http://savannah.gnu.org/projects/parallel) looks encouraging for its ability to, well, parallelize processing of your potentially large input. Unfortunately the use of SecureString precludes that possibility (eg, cat huge_dictionary | parallel --eta -j+0 ../pwcheck) for now.)
 
 
 

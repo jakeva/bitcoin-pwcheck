@@ -65,9 +65,10 @@ int main(int argc, char* argv[])
 
     // Use the crypto from the locked wallet
     // Replace these values with your own
-    // Note: so far I have had no luck cracking these values
-    //       they are from my locked wallet. If anyone has success,
-    //       I will reward them with 1 bitcoin. email me at jakeva (at) gmail (dot) com
+    //
+    // These cryptographic values belong to a wallet that was successfully cracked by Dave Bitcoin (http://walletrecoveryservices.com)(http://www.reddit.com/r/Bitcoin/comments/1q8zan/)
+    // The password that successfully unlocks these values is 'coffee-lemon', without the quotes
+    // There was previously a reward here for anyone who cracked the password, but the reward has been claimed by Dave Bitcoin
     const unsigned int nDeriveIterations = 90367;
     const std::vector<unsigned char> chSalt = Convert("693f87a08e771ef0");
     const std::vector<unsigned char> vchCryptedKey = Convert("153eabea2afe4fa960c4d0cc05eb8b233f7f00bc4dc55bebf129f40cdcc3bec3451d572c0851fa5327d08d532f48bbd5");
