@@ -23,8 +23,8 @@ LIBPATHS= \
  -L"$(DB4DIR)/lib" \
  -L"$(OPENSSLDIR)/lib"
 
-USE_UPNP:=1
-USE_IPV6:=1
+USE_UPNP:=0
+USE_IPV6:=0
 
 LIBS= -dead_strip
 
