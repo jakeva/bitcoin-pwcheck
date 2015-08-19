@@ -1,14 +1,21 @@
 #include <algorithm>
 #include <string>
 #include <iostream>
-
+// compile with clang++ on OS X
 int main(int argc, char** argv)
 {
-    std::string s(argv[1]);
-    std::sort(s.begin(), s.end()); // it's actually important to sort first
-    do {
-        std::cout << s << '\n';
-    } while(std::next_permutation(s.begin(), s.end()));
+  if (argc == 1) 
+    {
+      std::cout << "Must provide something to permute as an argument\n";
+      return 1;
+    }
+  std::string s(argv[1]);
+  std::sort(s.begin(), s.end()); // it's actually important to sort first
+  do {
+    std::cout << s << '\n';
+  } while(std::next_permutation(s.begin(), s.end()));
+  
+  return 0;
 }
 // void swap(std::string &s, int i, int j)
 // {
